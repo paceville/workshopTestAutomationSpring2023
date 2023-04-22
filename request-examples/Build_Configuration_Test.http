@@ -1,0 +1,113 @@
+### 0. Get CSRF token
+GET http://admin:admin@localhost:8111/authenticationTest.html?csrf
+Accept: application/json
+
+### 1. Create project
+POST http://admin:admin@localhost:8111/app/rest/projects
+Content-Type: application/json
+Accept: application/json
+X-TC-CSRF-Token: 9b0cecd1-eef4-44d4-af83-bf840b7e48af
+
+{
+  "parentProject": {
+    "locator": "_Root"
+  },
+  "name": "Test Project",
+  "id": "TestProjectId",
+  "copyAllAssociatedSettings": true
+}
+
+### 2. Create VCS
+POST http://admin:admin@localhost:8111/app/rest/vcs-roots
+Content-Type: application/json
+Accept: application/json
+X-TC-CSRF-Token: 7a7fc028-e98b-4558-ab87-0fb73f60ffac
+
+{
+  "id": "MyCustomRootId",
+  "name": "MyCustomRoot",
+  "vcsName": "jetbrains.git",
+  "project": {
+    "id": "TestProjectId"
+  },
+  "properties": {
+    "property": [
+      {
+        "name": "authMethod",
+        "value": "ANONYMOUS"
+      },
+      {
+        "name": "branch",
+        "value": "refs/heads/master"
+      },
+      {
+        "name": "url",
+        "value": "https://github.com/paceville/WeatherstackTest"
+      }
+    ]
+  }
+}
+
+### 3. Create build configuration
+POST http://admin:admin@localhost:8111/app/rest/buildTypes
+Content-Type: application/json
+Accept: application/json
+X-TC-CSRF-Token: af146aa5-0938-4d00-a017-197d6d4fbcc5
+
+{
+  "id": "myBuildId",
+  "name": "Test build",
+  "project": {
+    "id": "TestProjectId"
+  },
+  "parameters": {
+    "property": [
+      {
+        "name": "myBuildParameter",
+        "value": "myValue"
+      }
+    ]
+  },
+  "steps": {
+    "step": [
+      {
+        "name": "myCommandLineStep",
+        "type": "simpleRunner",
+        "properties": {
+          "property": [
+            {
+              "name": "script.content",
+              "value": "echo \"Hello world\""
+            },
+            {
+              "name": "teamcity.step.mode",
+              "value": "default"
+            },
+            {
+              "name": "use.custom.script",
+              "value": "true"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+
+### 4. Run build configuration
+POST http://admin:admin@localhost:8111/app/rest/buildQueue
+Content-Type: application/json
+Accept: application/json
+X-TC-CSRF-Token: 7cf89e5d-5d65-4eb0-89c7-a025cf935e01
+
+{
+  "buildType": {
+    "id": "myBuildId"
+  }
+}
+
+### 5. Check success build results
+GET http://admin:admin@localhost:8111/app/rest/builds/id:2
+Content-Type: application/json
+Accept: application/json
+X-TC-CSRF-Token: 7cf89e5d-5d65-4eb0-89c7-a025cf935e01

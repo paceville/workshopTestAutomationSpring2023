@@ -1,0 +1,23 @@
+### get projects
+GET http://admin:admin@localhost:8111/app/rest/projects
+Accept: application/json
+
+### get builds
+GET http://admin:admin@localhost:8111/app/rest/builds
+Accept: application/json
+
+### get vcs roots
+GET http://admin:admin@localhost:8111/app/rest/vcs-roots
+Accept: application/json### get vcs roots
+
+### get build configurations
+GET http://admin:admin@localhost:8111/app/rest/buildTypes
+Accept: application/json
+
+### get build configurations by build id
+GET http://admin:admin@localhost:8111/app/rest/buildTypes/id:WeatherstackTest_Build
+Accept: application/json
+
+### get build statistics
+GET http://admin:admin@localhost:8111/app/rest/builds/id:2/statistics
+Accept: application/json

@@ -6,7 +6,7 @@ Accept: application/json
 POST http://admin:admin@localhost:8111/app/rest/projects
 Content-Type: application/json
 Accept: application/json
-X-TC-CSRF-Token: 9b0cecd1-eef4-44d4-af83-bf840b7e48af
+X-TC-CSRF-Token: c43a7012-b49e-45f3-86b2-4d0c3a25badc
 
 {
   "parentProject": {
@@ -21,14 +21,14 @@ X-TC-CSRF-Token: 9b0cecd1-eef4-44d4-af83-bf840b7e48af
 POST http://admin:admin@localhost:8111/app/rest/vcs-roots
 Content-Type: application/json
 Accept: application/json
-X-TC-CSRF-Token: 7a7fc028-e98b-4558-ab87-0fb73f60ffac
+X-TC-CSRF-Token: c43a7012-b49e-45f3-86b2-4d0c3a25badc
 
 {
-  "id": "MyCustomRootId",
-  "name": "MyCustomRoot",
+  "id": "ApiTestVersion2Id10",
+  "name": "ApiTestVersion20",
   "vcsName": "jetbrains.git",
   "project": {
-    "id": "TestProjectId"
+    "id": "ApiTestVersion2Project4"
   },
   "properties": {
     "property": [
@@ -42,7 +42,7 @@ X-TC-CSRF-Token: 7a7fc028-e98b-4558-ab87-0fb73f60ffac
       },
       {
         "name": "url",
-        "value": "https://github.com/paceville/WeatherstackTest"
+        "value": "https://github.com/paceville/workshopTestAutomationSpring2023"
       }
     ]
   }
@@ -55,10 +55,10 @@ Accept: application/json
 X-TC-CSRF-Token: af146aa5-0938-4d00-a017-197d6d4fbcc5
 
 {
-  "id": "myBuildId",
-  "name": "Test build",
+  "id": "ApiTest2BuildId",
+  "name": "ApiTest2Build",
   "project": {
-    "id": "TestProjectId"
+    "id": "ApiTestVersion2Project4"
   },
   "parameters": {
     "property": [
